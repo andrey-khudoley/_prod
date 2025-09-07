@@ -49,7 +49,7 @@ app.post('/', async (ctx, req) => {
     const userId = getCookieFromTilda(cookiesStr, 'x-chtm-uid');
 
     if (!userId) {
-      throw new Error('UID не найден: включите «Посылать Cookie» в Webhook Tilda и убедитесь, что в COOKIES присутствует x-chtm-uid');
+      throw Debug.throw(ctx, 'UID не найден: включите «Посылать Cookie» в Webhook Tilda и убедитесь, что в COOKIES присутствует x-chtm-uid', 'E_NO_UID');
     }
     Debug.info(ctx, `UID из COOKIES: ${userId}`);
 
